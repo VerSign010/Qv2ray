@@ -1,9 +1,9 @@
 name: Qv2ray build matrix - cmake
 
 on:
-  push:
+ # push:
   release:
-    types: [prereleased]
+    types: [released]
 
 jobs:
   check_commit_msg:
