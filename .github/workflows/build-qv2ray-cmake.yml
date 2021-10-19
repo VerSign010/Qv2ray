@@ -2,10 +2,10 @@ name: Qv2ray build matrix - cmake
 
 on:
   push:
-    branches-ignore:
-      - l10n_dev
+   # branches-ignore:
+    #  - l10n_dev
   release:
-    types: [prereleased]
+    types: [released]
 
 jobs:
   check_commit_msg:
@@ -25,13 +25,13 @@ jobs:
     if: ${{ !contains( needs.check_commit_msg.outputs.commit_message, '!QT5') }}
     strategy:
       matrix:
-        platform: [ubuntu-16.04, macos-latest, windows-latest]
-        arch: [x64]
+        platform: [windows-latest]
+        arch: [x32]
         build_type: [RelWithDebInfo, Release]
         qt_version: [5.15.0]
         include:
           - platform: windows-latest
-            arch: x64
+            arch: x32
             qtarch: win64_msvc2019_64
       fail-fast: false
 
